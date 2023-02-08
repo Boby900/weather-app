@@ -26,7 +26,7 @@ const countryCode = document.getElementById("country-code")
 const geocoding = ()=>{
   const input1 = cityName.value
   const input3 = countryCode.value
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input1},${input3}&limit=3&appid=4e85da042ac14ae79aeecba8f5d02749`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${input1},${input3}&limit=3&appid=4e85da042ac14ae79aeecba8f5d02749`)
   .then(response => response.json())
   .then(response => console.log(response[0]["lat"],response[0]["lon"]))
   .catch(err => console.error(err))  
