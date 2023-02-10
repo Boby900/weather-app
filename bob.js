@@ -8,6 +8,23 @@ const countryCode = document.getElementById("country-code");
 
 let result1 = 0;
 let result2 = 0;
+let cntry;
+let parentBtn = document.createElement("div");
+parentBtn.classList.add('btn-parent');
+
+const createBTN = (resp)=>{
+  let btn = document.createElement('button');
+  btn.classList.add('btn');
+  btn.innerText += resp["name"] + ", ";
+  btn.innerText += resp["state"];
+  parentBtn.appendChild(btn);
+  btn.addEventListener('click',()=>{
+    result1 = resp["lat"];
+    result2 = resp["lon"];
+    options();
+  });
+}
+document.getElementById('second-div').appendChild(parentBtn);
 const geocoding = () => {
   const input1 = cityName.value;
   const input3 = countryCode.value;
@@ -16,8 +33,13 @@ const geocoding = () => {
   )
     .then((response) => response.json())
     .then((response) => {
-      result1 = response[0]["lat"];
-      result2 = response[0]["lon"];
+      let index = 0;
+      parentBtn.innerText += "Please choose the city from your country";
+      cntry = response[index]["country"];
+      while (response[index]["country"] == cntry) {
+        createBTN(response[index]);
+        index++;
+      }
     })
     .catch((err) => console.error(err));
 };
@@ -38,5 +60,4 @@ const options = () => {
 };
 Search.onclick = () => {
   geocoding();
-  options();
 };
