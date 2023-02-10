@@ -39,5 +39,17 @@ button{
 }
 #second-div{
    padding-left: 65%;
-
+}
+.btn-parent{
+    font-size: 20px;
+    width: min(40vw,400px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.btn{
+    font-size: 1.2em;
+    height: fit-content;
+    text-align: center;
+    margin: 10px;
 }
